@@ -6,3 +6,19 @@
 
 -- Vowels are not case-sensitive
 
+create or replace function count_vowels(input_text text)
+returns integer
+as
+$$
+def count_vowels(text):
+    vowels = ('aeiouy')
+    count = 0
+    for x in text.lower():
+        if x in vowels:
+            count += 1
+    return count
+
+return count_vowels(input_text)
+$$language plpythonu
+
+-- I tried looking into why plpythonu didn't work but i couldn't find it

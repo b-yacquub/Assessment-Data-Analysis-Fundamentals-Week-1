@@ -6,4 +6,4 @@ select category_name, product_name
 from products
 join categories using(category_id)
 where product_name ilike 's%'
-order by product_name desc;
+order by category_name,product_name;

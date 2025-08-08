@@ -11,4 +11,4 @@ from products p
 join categories using(category_id)
 join suppliers using(supplier_id)
 where category_name ilike '%m%'
-order by category_name desc;
+order by category_name,supplier desc;

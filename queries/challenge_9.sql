@@ -5,4 +5,4 @@
 select (title_of_courtesy ||' '||first_name ||' '||last_name ) 
 as employee_full_name 
 from employees
-order by hire_date desc;
+order by hire_date desc, last_name asc;
