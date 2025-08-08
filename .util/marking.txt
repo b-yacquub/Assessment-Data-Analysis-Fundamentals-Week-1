@@ -5,4 +5,4 @@ collected 43 items
 
 test_queries.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF              [100%]
 
-============================= 43 failed in 55.14s ==============================
+============================= 43 failed in 52.97s ==============================
