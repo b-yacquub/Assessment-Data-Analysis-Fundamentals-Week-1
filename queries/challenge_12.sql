@@ -9,7 +9,7 @@
 -- All values should be rounded to 2 d.p. for display (but otherwise kept at full precision)
 
 with prices as (
-select order_id, sum(p.unit_price) as expected_price, sum(p.unit_price * (1 - discount)) as actual_price
+select order_id, sum(p.unit_price*od.quantity ) as expected_price, sum(p.unit_price *od.quantity * (1 - discount)) as actual_price
 from orders o join order_details od using(order_id)
 join products p using(product_id)
 group by order_id
