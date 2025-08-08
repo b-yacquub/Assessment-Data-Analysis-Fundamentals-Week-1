@@ -6,9 +6,19 @@
 
 -- Results should be sorted alphabetically by supplier and category.
 
-select company_name as supplier,category_name as category, avg(p.unit_price ) over (partition by category_name) as average_price
-from products p 
-join categories using(category_id)
-join suppliers using(supplier_id)
-where category_name ilike '%m%'
-order by category_name,supplier desc;
+SELECT 
+    company_name AS supplier,
+    category_name AS category,
+    AVG(p.unit_price)::int AS average_price
+FROM 
+    products p
+JOIN 
+    categories USING(category_id)
+JOIN 
+    suppliers USING(supplier_id)
+WHERE 
+    category_name ILIKE '%m%'
+GROUP BY 
+    company_name, category_name
+ORDER BY 
+    company_name ASC, category_name ASC;
