@@ -2,3 +2,8 @@
 
 -- Results should be sorted  in descending order by count, with any ties sorted by descending order of category name.
 
+select category_name, count(product_id) as num_products
+from products
+join categories using(category_id)
+group by category_name 
+order by count(product_id) desc;
