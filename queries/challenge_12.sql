@@ -9,13 +9,12 @@
 -- All values should be rounded to 2 d.p. for display (but otherwise kept at full precision)
 
 with prices as (
-select order_id, sum(p.unit_price*od.quantity ) as expected_price, sum(p.unit_price *od.quantity * (1 - discount)) as actual_price
+select order_id, sum(p.unit_price*od.quantity ) as expected_price, sum((p.unit_price *od.quantity) * (1 - discount)) as actual_price
 from orders o join order_details od using(order_id)
 join products p using(product_id)
 group by order_id
 )
-select 
-order_id, round(expected_price::numeric, 2) as expected_price, round(actual_price::numeric, 2) as actual_price, round((expected_price - actual_price)::numeric, 2) as price_difference
+select order_id, round(expected_price::numeric, 2) as expected_price, round(actual_price::numeric, 2) as actual_price, round((expected_price - actual_price)::numeric, 2) as price_difference
 from prices
 order by price_difference desc
 limit 5;
